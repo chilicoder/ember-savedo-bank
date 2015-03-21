@@ -1,0 +1,10 @@
+<h2>Payees index</h2>
+{{#link-to 'payees.new'}}New payee{{/link-to}}
+<ul>
+
+    {{#each item in model}}
+        <li>
+            {{#link-to 'payees.payee' item}} {{item.name}}{{/link-to}}
+        </li>
+    {{/each}}
+</ul>

@@ -12,7 +12,8 @@
     "ember-qunit": "0.2.8",
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
-    "ember-cli-currency-shim": "~0.0.2"
+    "ember-cli-currency-shim": "~0.0.2",
+    "bootstrap": "~3.3.4"
   },
   "devDependencies": {
     "ember-localstorage-adapter": "~0.5.2",

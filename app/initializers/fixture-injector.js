@@ -1,4 +1,15 @@
+function currencyInitialize(currency) {
+    currency.settings.formatWithSymbol = true;
+    currency.settings.separator = ' ';
+    currency.settings.decimal = ',';
+    currency.settings.symbol = '€';
+}
+
+
 export function initialize( container /* , application */ ) {
+
+    currencyInitialize(currency);
+
     var store = container.lookup('store:main');
     store.pushMany('bank',
         [
@@ -15,8 +26,8 @@ export function initialize( container /* , application */ ) {
     );
     store.pushMany('payee',
         [
-            {id: 1, firstname: 'John', secondname: 'Doe', bank: '1' ,IBAN: 'DE12500105170648489890'},
-            {id: 2, firstname: 'John', secondname: 'Doe2', bank: '2' ,IBAN: 'DE33290700240105668800'}
+            {id: 1, firstname: 'John', secondname: 'Doe', bank: 1 ,IBAN: 'DE12500105170648489890'},
+            {id: 2, firstname: 'John', secondname: 'Doe2', bank: 2 ,IBAN: 'DE33290700240105668800'}
 
         ]
     );
@@ -39,8 +50,8 @@ export function initialize( container /* , application */ ) {
             {id: 15,payee: 1, createdAt: "Sat Mar 30 2015 19:16:08 GMT+0100 (CET)", amount: 300 }
 
         ]
-
     );
+//    store.save();
 }
 
 export default {

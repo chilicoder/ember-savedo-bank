@@ -1,1 +1,19 @@
-{{outlet}}
+<h2>New Payee:</h2>
+{{log this}}
+<h2>Specify payee's information</h2>
+<form>
+    {{input placeholder="First Name" value=firstNameValue}}
+    {{#if errorMessages.firstNameValue}}
+        {{errorMessages.firstNameValue}}
+    {{/if}}
+    {{input placeholder="Surname" value=secondNameValue}}
+    {{#if errorMessages.secondNameValue}}
+        {{errorMessages.secondNameValue}}
+    {{/if}}
+    {{view 'select' content=model.banks optionValuePath="content.id" optionLabelPath="content.name" value=bankSelectValue}}
+    {{input placeholder="IBAN" value=IBANValue}}
+    {{#if errorMessages.IBANValue}}
+        {{errorMessages.IBANValue}}
+    {{/if}}
+    <a {{action 'submit'}} class="btn btn-primary">Create new payee</a>
+</form>

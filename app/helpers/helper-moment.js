@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-export function helperMoment(params, hash) {
-    var format = 'llll';
+export function helperMoment(params, options) {
+    var format = options['format'] || 'llll';
     return new Ember.Handlebars.SafeString(moment(params[0]).format(format) );
 }
 

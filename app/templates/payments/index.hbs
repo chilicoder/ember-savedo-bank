@@ -1,0 +1,13 @@
+<h2>payments index</h2>
+{{log this}}
+
+{{#link-to 'payments.new'}}Make new{{/link-to}}
+
+<ul>
+
+{{#each item in model}}
+    <li>
+    {{item.id}} {{item.payee.name}}
+    </li>
+{{/each}}
+</ul>

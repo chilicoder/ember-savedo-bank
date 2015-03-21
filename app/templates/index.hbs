@@ -1,8 +1,13 @@
-{{log this}}
+<div>
 Current Balance: {{helper-currency model.currentBalance}}
+</div>
+
+{{#link-to 'payments.new' class="btn btn-primary"}}Make payment{{/link-to}}
+{{#link-to 'payees'}}Payees{{/link-to}}
+
 <ul>
 {{#each item in limitedPaymentList}}
-    <li>{{item.id}} {{helper-moment item.createdAt}} {{item.payee.name}} {{item.amount}}</li>
+    <li>{{item.id}} {{helper-moment item.createdAt format='ll'}} {{item.payee.name}} {{helper-currency item.amount}}</li>
 {{/each}}
 </ul>
 {{outlet}}
