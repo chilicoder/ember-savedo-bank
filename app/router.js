@@ -6,6 +6,13 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.resource('payees', function() {
+    this.resource('payee', function() {});
+    this.route('new');
+  });
+  this.resource('payments', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

@@ -1,0 +1,8 @@
+{{log this}}
+Current Balance: {{helper-currency model.currentBalance}}
+<ul>
+{{#each item in limitedPaymentList}}
+    <li>{{item.id}} {{helper-moment item.createdAt}} {{item.payee.name}} {{item.amount}}</li>
+{{/each}}
+</ul>
+{{outlet}}
