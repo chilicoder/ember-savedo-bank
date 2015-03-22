@@ -21,6 +21,8 @@ app.import('bower_components/moment/moment.js');
 app.import('bower_components/ember-localstorage-adapter/localstorage_adapter.js');
 app.import('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
 app.import('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css');
+//app.import('bower_components/ember-x-editable/dist/assets/ember-x-editable.js');
+//app.import('bower_components/ember-x-editable/dist/assets/ember-x-editable.css');
 //app.import('bower_components/ember-validations/packages/ember-validations/lib/main.js');
 
 

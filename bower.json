@@ -19,6 +19,6 @@
     "bootstrap-datepicker": "~1.4.0"
   },
   "devDependencies": {
-    "ember-localstorage-adapter": "~0.5.2",
+    "ember-localstorage-adapter": "~0.5.2"
   }
 }

@@ -1,4 +1,21 @@
-<h2>{{name}}</h2>
-Bank: {{bank.name}}
-IBAN: {{IBAN}}
-Transactions: TBD
+{{log this}}
+<h2>{{model.name}}</h2>
+Bank: {{model.bank.name}}
+IBAN: {{model.IBAN}}
+{{#if isEditing}}
+    {{partial 'payees/edit-payee'}}
+    <a {{action 'finishEditing'}}>Save payee</a>
+{{else}}
+    <a {{action 'startEditing'}}>Edit payee</a>
+{{/if}}
+<div>
+{{#if payments}}
+    Transactions for this payee:
+    <ul>
+        {{#each item in payments}}
+            <li> On {{helper-moment item.createdAt}}  was transfered {{helper-currency item.amount}} </li>
+        {{/each}}
+    </ul>
+
+{{/if}}
+</div>

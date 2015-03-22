@@ -1,18 +1,8 @@
 <h2>New Payee:</h2>
-<h2>Specify payee's information</h2>
-<form>
-    {{input placeholder="First Name" value=firstNameValue}}
-    {{#if errorMessages.firstNameValue}}
-        {{errorMessages.firstNameValue}}
-    {{/if}}
-    {{input placeholder="Surname" value=secondNameValue}}
-    {{#if errorMessages.secondNameValue}}
-        {{errorMessages.secondNameValue}}
-    {{/if}}
-    {{view 'select' content=model.banks optionValuePath="content.id" optionLabelPath="content.name" value=bankSelectValue}}
-    {{input placeholder="IBAN" value=IBANValue}}
-    {{#if errorMessages.IBANValue}}
-        {{errorMessages.IBANValue}}
-    {{/if}}
+{{#if submitedSuccessfully}}
+    {{!--{{#link-to 'payees.payee' submitedSuccessfully}}To the payee page{{/link-to}}--}}
+    {{#link-to 'index' }}To the account overview{{/link-to}}
+{{else}}
+    {{partial 'payees/edit-payee'}}
     <a {{action 'submit'}} class="btn btn-primary">Create new payee</a>
-</form>
+{{/if}}

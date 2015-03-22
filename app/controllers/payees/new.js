@@ -13,7 +13,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
         },
         IBANValue: {
             format: { with: /^([a-zA-Z]|\d)+$/, allowBlank: false, message: 'Must be letters and numbers only'  },
-            length: { is: 21}
+            length: { is: 2}
         }
     },
     firstNameValue: null,
@@ -47,7 +47,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                     payee.save().then(function(data){
                             self.set('submitedOnce',false);
                             alert('Payee '+data.get('name')+' successfully created!');
-                            self.transitionToRoute('payees.payee',data);
+                            self.set('submitedSuccessfully',data);
                         }
                     );
 

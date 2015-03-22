@@ -5,6 +5,10 @@ export default Ember.Route.extend({
         return Ember.RSVP.hash ({
             banks: this.store.find('bank')
         });
+    },
+    setupController: function(controller, model){
+//        this._super(controller,model.payee);
+        controller.set('banks', model.banks);
     }
 
 });
