@@ -1,21 +1,39 @@
-<h2>payments new</h2>
-{{#link-to 'index'}}To overview{{/link-to}}
-{{#link-to 'payments.index' }}To payments{{/link-to}}
-
-<h2>Specify payment information</h2>
-<form>
-    {{view 'select' content=model optionValuePath="content.id" optionLabelPath="content.name" value=payeeValue}}
-
-    {{input placeholder="Amount" value=amountValue}}
-    {{#if errorMessages.amountValue}}
-        {{errorMessages.amountValue}}
-    {{/if}}
-    {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true}}
-    {{!--{{date-picker date=dateValue valueFormat='YYYY-MM-DD' allowBlank=true}}--}}
-    {{!--{{input placeholder="Date (for delayed transfer)" value=dateValue}}--}}
-    {{#if errorMessages.dateValue}}
-        {{errorMessages.dateValue}}
-    {{/if}}
-
-    <a {{action 'submit'}} class="btn btn-primary">Create new payment</a>
-</form>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h2>Make a payment</h2>
+        {{#link-to 'index'}}To overview{{/link-to}}
+        {{#link-to 'payments.index' }}To payments{{/link-to}}
+        <h2>Specify payment information</h2>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="payee" class="col-sm-3 control-label">Choose payee</label>
+                <div class="col-sm-9">
+                    {{view 'select' id ="payee" class="form-control" content=model optionValuePath="content.id" optionLabelPath="content.name" value=payeeValue}}
+                </div>
+            </div>
+            <div {{bind-attr class=":form-group errorMessages.amountValue:has-error"}}>
+                <label for="amount" class="col-sm-3 control-label">Specify amount</label>
+                <div class="col-sm-9">
+                    {{input placeholder="Amount" value=amountValue class="form-control"}}
+                    {{#if errorMessages.amountValue class="error-message"}}
+                        {{errorMessages.amountValue}}
+                    {{/if}}
+                </div>
+            </div>
+            <div {{bind-attr class=":form-group errorMessages.dateValue:has-error"}}>
+                <label for="amount" class="col-sm-3 control-label">Specify date, for delay payment</label>
+                <div class="col-sm-9">
+                    {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true class="form-control"}}
+                    <div>
+                        {{#if errorMessages.dateValue class="error-message"}}
+                            {{errorMessages.dateValue}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="submit">
+                <a {{action 'submit'}} class="btn btn-lg btn-primary">Create payment</a>
+            </div>
+        </form>
+    </div>
+</div>

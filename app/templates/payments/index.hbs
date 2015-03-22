@@ -1,13 +1,28 @@
-<h2>payments index</h2>
-{{log this}}
-
-{{#link-to 'payments.new'}}Make new{{/link-to}}
-
-<ul>
-
-{{#each item in model}}
-    <li>
-    {{item.id}} {{item.payee.name}}
-    </li>
-{{/each}}
-</ul>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h3>Your Payments:</h3>
+        {{#if arrangedContent}}
+            <table class="table table-striped payments">
+                <tr>
+                    <th>Time</th>
+                    <th class="hidden-xs">Action</th>
+                    <th>Amount</th>
+                    <th>Payee</th>
+                </tr>
+                {{#each item in arrangedContent}}
+                    <tr>
+                        <td {{bind-attr class='item.isFutureTransfer:future'}}>{{helper-moment item.createdAt format='ll'}}</td>
+                        <td class="hidden-xs"> you {{#if item.isFutureTransfer}}will transfer {{else}}transfered{{/if}} </td>
+                        <td>{{helper-currency item.amount}}</td>
+                        <td>{{item.payee.name}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        {{else}}
+            <h3>You dont'have payments yet</h3>
+        {{/if}}
+        <div class="submit">
+            {{#link-to 'payments.new' class="btn btn-lg btn-primary"}}Make new{{/link-to}}
+        </div>
+    </div>
+</div>

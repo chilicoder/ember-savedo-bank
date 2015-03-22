@@ -1,20 +1,33 @@
-<h2>{{model.name}}</h2>
-Bank: {{model.bank.name}}
-IBAN: {{model.IBAN}}
-{{#if isEditing}}
-    {{partial 'payees/edit-payee'}}
-    <a {{action 'finishEditing'}}>Save payee</a>
-{{else}}
-    <a {{action 'startEditing'}}>Edit payee</a>
-{{/if}}
-<div>
-{{#if payments}}
-    Transactions for this payee:
-    <ul>
-        {{#each item in payments}}
-            <li> On {{helper-moment item.createdAt}}  was transfered {{helper-currency item.amount}} </li>
-        {{/each}}
-    </ul>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h2>{{model.name}}</h2>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Bank: {{model.bank.name}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>IBAN: {{model.IBAN}}</h5>
+            </div>
+        </div>
 
-{{/if}}
+        {{#if isEditing}}
+            {{partial 'payees/edit-payee'}}
+            <div class="submit">
+                <a {{action 'finishEditing'}} class="btn btn-lg btn-primary">Save payee</a>
+            </div>
+        {{else}}
+            <div class="submit">
+                <a {{action 'startEditing'}} class="btn btn-lg btn-primary">Edit payee</a>
+            </div>
+        {{/if}}
+
+
+    </div>
 </div>
+{{#unless isEditing}}
+    {{#if payments}}
+        {{render 'payments.index' payments}}
+    {{/if}}
+{{/unless}}

@@ -8,4 +8,51 @@ body {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    color: @custom-color-black;
+}
+
+h1,h2,h3,h4 {
+    color: @custom-color-blue;
+}
+
+nav {
+    .logo {
+        height: 40px;
+        margin-top: -10px;
+    }
+    @media (max-width: @screen-xs-max) {
+        .navbar-brand {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.overview {
+    .graph {
+        //    width: 300px;
+        height: 250px;
+        background-color: @custom-color-light-grey;
+    }
+    div.payments {
+        ul {
+            list-style-type: none;
+            padding: 10px;
+            span.future {
+                color: @custom-color-orange;
+            }
+        }
+    }
+}
+
+table.payments {
+    td.future {
+        color: @custom-color-orange;
+    }
+
+}
+
+
+div.submit {
+    text-align: center;
 }

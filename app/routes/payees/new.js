@@ -9,6 +9,11 @@ export default Ember.Route.extend({
     setupController: function(controller, model){
 //        this._super(controller,model.payee);
         controller.set('banks', model.banks);
+    },
+    actions: {
+        willTransition: function (transition) {
+            console.log('DATAA!',transition);
+            this.get('controller').flush();
+        }
     }
-
 });

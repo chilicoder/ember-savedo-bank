@@ -21,6 +21,15 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
     bankSelectValue: null,
     IBANValue: null,
     submitedOnce: false,
+
+    flush: function(){
+        this.set('firstNameValue',null);
+        this.set('secondNameValue',null);
+        this.set('bankSelectValue',null);
+        this.set('IBANValue',null);
+        this.set('submitedOnce',false);
+    },
+
     errorMessages: function() {
         if (this.get('submitedOnce')) {
             return this.get('errors');
@@ -46,7 +55,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                     console.log('...saving');
                     payee.save().then(function(data){
                             self.set('submitedOnce',false);
-                            self.set('submitedSuccessfully',data);
+                            self.transitionToRoute('payees.payee',data.get('id'))
                         }
                     );
 

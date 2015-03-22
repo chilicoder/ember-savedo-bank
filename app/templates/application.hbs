@@ -1,12 +1,24 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            {{#link-to 'index' class="navbar-brand"}}Savedo-Bank{{/link-to}}
+                {{#link-to 'index' class="navbar-brand"}}
+                    <div>
+                        <img class="logo" src="Savedo-logo.png" alt="Logo png">
+                        <span class="hidden-xs">Savedo Bank</span>
+                    </div>
+                {{/link-to}}
         </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>{{#link-to 'index' class="btn btn-link"}}Account{{/link-to}}</li>
+            <li>{{#link-to 'payees'class="btn btn-link"}}Payees{{/link-to}}</li>
+            <li>{{#link-to 'payments'class="btn btn-link"}}Payments{{/link-to}}</li>
+        </ul>
     </div>
 </nav>
 
-<h2 id="title">Welcome to Ember.js</h2>
 
-{{outlet}}
+<div class="container">
+    {{outlet}}
+</div>

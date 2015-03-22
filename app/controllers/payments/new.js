@@ -27,10 +27,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 
     },
     payeeValue: null,
+
     amountValue: null,
+
     dateValue: null,
 
     submitedOnce: false,
+
     errorMessages: function() {
         if (this.get('submitedOnce')) {
             return this.get('errors');
@@ -39,7 +42,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
             return {};
         }
     }.property('errors','submitedOnce'),
-
 
     actions:{
         submit: function() {

@@ -1,11 +1,27 @@
-<h2>Payees index</h2>
-{{#link-to 'payees.new'}}New payee{{/link-to}}
-<ul>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <h3>Payees:</h3>
+        {{#if model.content}}
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Bank</th>
+                    <th class="hidden-xs">IBAN</th>
+                </tr>
+                {{#each item in arrangedContent}}
+                    <tr {{bind-attr class='item.isFutureTransfer:warning:success'}}>
+                        <td>{{#link-to 'payees.payee' item.id}} {{item.name}}{{/link-to}}</td>
+                        <td> {{item.bank.name}} </td>
+                        <td class="hidden-xs"> {{item.IBAN}} </td>
+                    </tr>
+                {{/each}}
+            </table>
+        {{else}}
+            <h3>You dont'have Payees yet</h3>
+        {{/if}}
+        <div class="submit">
+            {{#link-to 'payees.new' class="btn btn-lg btn-primary"}}New Payee{{/link-to}}
+        </div>
+    </div>
+</div>
 
-    {{#each item in model}}
-        {{log item}}
-        <li>
-            {{#link-to 'payees.payee' item.id}} {{item.name}}{{/link-to}}
-        </li>
-    {{/each}}
-</ul>

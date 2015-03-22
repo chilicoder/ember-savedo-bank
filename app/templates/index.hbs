@@ -1,13 +1,46 @@
-<div>
-Current Balance: {{helper-currency model.currentBalance}}
+<div class="row overview">
+    <div class="col-md-12">
+        <h2 id="title">Welcome to Simple Bank Account</h2>
+    </div>
+    <div class="col-md-7">
+        <div class="balance">
+        Current Balance: {{helper-currency account.currentBalance}}
+        </div>
+        <div class="graph hidden-xs">
+
+        </div>
+        <h3>Choose your action:</h3>
+        <div class="row">
+            <div class="col-xs-4">
+                {{#link-to 'payments.new' class="btn btn-lg btn-primary"}}Make payment{{/link-to}}
+            </div>
+            <div class="col-xs-4 col-xs-offset-1">
+                {{#link-to 'payees.new' class="btn btn-lg btn-link"}}Add Payee{{/link-to}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 payments">
+        {{#if futurePaymentList}}
+            <h3>Future payments:</h3>
+            <ul>
+                {{#each item in futurePaymentList}}
+                    <li> On <span {{bind-attr class='item.isFutureTransfer:future'}}>{{helper-moment item.createdAt format='ll'}} </span> <span class="hidden-xs"> you {{#if item.isFutureTransfer}}will transfer {{else}}transfered{{/if}} </span> {{helper-currency item.amount}} to {{item.payee.name}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+        {{#if limitedPaymentList}}
+
+        <h3>Last payments:</h3>
+        <ul>
+            {{#each item in limitedPaymentList}}
+                <li {{bind-attr class='item.isFutureTransfer:future'}}> On {{helper-moment item.createdAt format='ll'}} <span class="hidden-xs"> you {{#if item.isFutureTransfer}}will transfer {{else}}transfered{{/if}} </span> {{helper-currency item.amount}} to {{item.payee.name}}</li>
+            {{/each}}
+        </ul>
+
+        {{/if}}
+
+        {{#link-to 'payments' class="btn btn-link"}}To all payments{{/link-to}}
+    </div>
 </div>
 
-{{#link-to 'payments.new' class="btn btn-primary"}}Make payment{{/link-to}}
-{{#link-to 'payees'}}Payees{{/link-to}}
-
-<ul>
-{{#each item in limitedPaymentList}}
-    <li>{{item.id}} {{helper-moment item.createdAt format='ll'}} {{item.payee.name}} {{helper-currency item.amount}}</li>
-{{/each}}
-</ul>
 {{outlet}}

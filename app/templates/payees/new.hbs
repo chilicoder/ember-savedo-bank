@@ -1,9 +1,15 @@
-<h2>New Payee:</h2>
-{{#if submitedSuccessfully}}
-    <h2>Payee {{submitedSuccessfully.name}} successfully created!</h2>
-    {{#link-to 'payees.payee' submitedSuccessfully.id}}To the payee page{{/link-to}}
-    {{#link-to 'index' }}To the account overview{{/link-to}}
-{{else}}
-    {{partial 'payees/edit-payee'}}
-    <a {{action 'submit'}} class="btn btn-primary">Create new payee</a>
-{{/if}}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        {{#if submitedSuccessfully}}
+            <h2>Payee {{submitedSuccessfully.name}} successfully created!</h2>
+            {{#link-to 'payees.payee' submitedSuccessfully.id}}To the payee page{{/link-to}}
+            {{#link-to 'index' }}To the account overview{{/link-to}}
+        {{else}}
+            <h2>Add a new Payee:</h2>
+            {{partial 'payees/edit-payee'}}
+        <div class="submit">
+            <a {{action 'submit'}} class="btn btn-lg btn-primary" tabindex="5">Create new payee</a>
+        </div>
+        {{/if}}
+    </div>
+</div>
