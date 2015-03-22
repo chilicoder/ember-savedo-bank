@@ -20,7 +20,7 @@ export function initialize( container /* , application */ ) {
     store.push('account',
         {
             id: 1,
-            currentBalance: 132432465.45,
+            currentBalance: 56000,
             payments: [1,2,3,4,5,6,7,8,9,10,11,12]
         }
     );

@@ -55,7 +55,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                     console.log('...saving');
                     payee.save().then(function(data){
                             self.set('submitedOnce',false);
-                            self.transitionToRoute('payees.payee',data.get('id'))
+                            self.transitionToRoute('payees.payee',data.get('id'));
                         }
                     );
 

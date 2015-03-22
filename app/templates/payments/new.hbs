@@ -8,13 +8,14 @@
             <div class="form-group">
                 <label for="payee" class="col-sm-3 control-label">Choose payee</label>
                 <div class="col-sm-9">
-                    {{view 'select' id ="payee" class="form-control" content=model optionValuePath="content.id" optionLabelPath="content.name" value=payeeValue}}
+                    {{view 'select' id ="payee" class="form-control" content=model optionValuePath="content.id"
+                    optionLabelPath="content.name" value=payeeValue tabindex="1"}}
                 </div>
             </div>
             <div {{bind-attr class=":form-group errorMessages.amountValue:has-error"}}>
                 <label for="amount" class="col-sm-3 control-label">Specify amount</label>
                 <div class="col-sm-9">
-                    {{input placeholder="Amount" value=amountValue class="form-control"}}
+                    {{input placeholder="Amount" value=amountValue class="form-control" tabindex="2"}}
                     {{#if errorMessages.amountValue class="error-message"}}
                         {{errorMessages.amountValue}}
                     {{/if}}
@@ -23,7 +24,7 @@
             <div {{bind-attr class=":form-group errorMessages.dateValue:has-error"}}>
                 <label for="amount" class="col-sm-3 control-label">Specify date, for delay payment</label>
                 <div class="col-sm-9">
-                    {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true class="form-control"}}
+                    {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true class="form-control" tabindex="3"}}
                     <div>
                         {{#if errorMessages.dateValue class="error-message"}}
                             {{errorMessages.dateValue}}
@@ -32,7 +33,7 @@
                 </div>
             </div>
             <div class="submit">
-                <a {{action 'submit'}} class="btn btn-lg btn-primary">Create payment</a>
+                <a {{action 'submit'}} class="btn btn-lg btn-primary" tabindex="4">Create payment</a>
             </div>
         </form>
     </div>

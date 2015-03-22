@@ -1,13 +1,13 @@
 <div class="row overview">
     <div class="col-md-12">
-        <h2 id="title">Welcome to Simple Bank Account</h2>
+        <h2 id="title">Welcome to Savedo Bank Account</h2>
     </div>
     <div class="col-md-7">
         <div class="balance">
         Current Balance: {{helper-currency account.currentBalance}}
         </div>
         <div class="graph hidden-xs">
-
+            {{ember-chart type='Line' data=chartData heigth=500 width=400}}
         </div>
         <h3>Choose your action:</h3>
         <div class="row">

@@ -7,6 +7,6 @@ export default DS.Model.extend({
         defaultValue: function() { return new Date(); }
     }),
     isFutureTransfer: function (){
-        return moment(this.get('createdAt')).diff(moment()) > 0
+        return moment(this.get('createdAt')).diff(moment()) > 0;
     }.property('createdAt')
 });
