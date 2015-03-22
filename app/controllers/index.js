@@ -32,7 +32,7 @@ export default Ember.ArrayController.extend({
             return {
                 label: moment(item.get('createdAt')).format('ll'),
                 data: balance
-            }
+            };
         }).reverse();
         console.log('dataArray',dataArray);
 
@@ -51,7 +51,7 @@ export default Ember.ArrayController.extend({
                 }
             ]
 
-        }
+        };
 
     }.property('arrangedContent','account.currentBalance')
 });
