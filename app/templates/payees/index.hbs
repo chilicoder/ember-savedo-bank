@@ -3,8 +3,9 @@
 <ul>
 
     {{#each item in model}}
+        {{log item}}
         <li>
-            {{#link-to 'payees.payee' item}} {{item.name}}{{/link-to}}
+            {{#link-to 'payees.payee' item.id}} {{item.name}}{{/link-to}}
         </li>
     {{/each}}
 </ul>

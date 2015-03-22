@@ -60,7 +60,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                             self.set('payeeValue',null);
                             self.set('amountValue',null);
                             self.set('dateValue',null);
-                            self.transitionToRoute('payees.payee',data.get('payee'));
+                            self.transitionToRoute('payees.payee',data.get('payee.id'));
                         }
                     );
 
