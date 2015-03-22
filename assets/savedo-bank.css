@@ -3,55 +3,55 @@
   font-family: 'Myriad Pro Regular';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Regular'), url('/fonts/MYRIADPRO-REGULAR.woff') format('woff');
+  src: local('Myriad Pro Regular'), url('/ember-savedo-bank/fonts/MYRIADPRO-REGULAR.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Condensed';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Condensed'), url('/fonts/MYRIADPRO-COND.woff') format('woff');
+  src: local('Myriad Pro Condensed'), url('/ember-savedo-bank/fonts/MYRIADPRO-COND.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Semibold Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Semibold Italic'), url('/fonts/MYRIADPRO-SEMIBOLDIT.woff') format('woff');
+  src: local('Myriad Pro Semibold Italic'), url('/ember-savedo-bank/fonts/MYRIADPRO-SEMIBOLDIT.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Semibold';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Semibold'), url('/fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
+  src: local('Myriad Pro Semibold'), url('/ember-savedo-bank/fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Condensed Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Condensed Italic'), url('/fonts/MYRIADPRO-CONDIT.woff') format('woff');
+  src: local('Myriad Pro Condensed Italic'), url('/ember-savedo-bank/fonts/MYRIADPRO-CONDIT.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Bold Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Italic'), url('/fonts/MYRIADPRO-BOLDIT.woff') format('woff');
+  src: local('Myriad Pro Bold Italic'), url('/ember-savedo-bank/fonts/MYRIADPRO-BOLDIT.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Bold Condensed Italic';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Condensed Italic'), url('/fonts/MYRIADPRO-BOLDCONDIT.woff') format('woff');
+  src: local('Myriad Pro Bold Condensed Italic'), url('/ember-savedo-bank/fonts/MYRIADPRO-BOLDCONDIT.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Bold Condensed';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold Condensed'), url('/fonts/MYRIADPRO-BOLDCOND.woff') format('woff');
+  src: local('Myriad Pro Bold Condensed'), url('/ember-savedo-bank/fonts/MYRIADPRO-BOLDCOND.woff') format('woff');
 }
 @font-face {
   font-family: 'Myriad Pro Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('Myriad Pro Bold'), url('/fonts/MYRIADPRO-BOLD.woff') format('woff');
+  src: local('Myriad Pro Bold'), url('/ember-savedo-bank/fonts/MYRIADPRO-BOLD.woff') format('woff');
 }
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
