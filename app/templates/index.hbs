@@ -4,18 +4,18 @@
     </div>
     <div class="col-md-7">
         <div class="balance">
-        Current Balance: {{helper-currency account.currentBalance}}
+            Current Balance: {{helper-currency account.currentBalance}}
         </div>
         <div class="graph hidden-xs">
             {{ember-chart type='Line' data=chartData height=300 width=500}}
         </div>
         <h3>Choose your action:</h3>
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-5 col-sm-3">
                 {{#link-to 'payments.new' class="btn btn-lg btn-primary"}}Make payment{{/link-to}}
             </div>
-            <div class="col-xs-4 col-xs-offset-1">
-                {{#link-to 'payees.new' class="btn btn-lg btn-link"}}Add Payee{{/link-to}}
+            <div class="col-xs-4 col-xs-offset-1 col-sm-3">
+                {{#link-to 'payees.new' class="btn btn-lg btn-link payee-new"}}Add Payee{{/link-to}}
             </div>
         </div>
     </div>
@@ -29,16 +29,26 @@
             </ul>
         {{/if}}
         {{#if limitedPaymentList}}
-
-        <h3>Last payments:</h3>
-        <ul>
-            {{#each item in limitedPaymentList}}
-                <li {{bind-attr class='item.isFutureTransfer:future'}}> On {{helper-moment item.createdAt format='ll'}} <span class="hidden-xs"> you {{#if item.isFutureTransfer}}will transfer {{else}}transfered{{/if}} </span> {{helper-currency item.amount}} to {{item.payee.name}}</li>
-            {{/each}}
-        </ul>
-
+            <h3>Last payments:</h3>
+            <table class="table table-striped payments">
+                <tr>
+                    <th>Time</th>
+                    <th class="hidden-xs">Action</th>
+                    <th>Amount</th>
+                    <th>Payee</th>
+                </tr>
+                {{#each item in limitedPaymentList}}
+                    <tr>
+                        <td {{bind-attr class='item.isFutureTransfer:future'}}>{{helper-moment item.createdAt format='ll'}}</td>
+                        <td class="hidden-xs"> you {{#if item.isFutureTransfer}}will transfer {{else}}transfered{{/if}} </td>
+                        <td>{{helper-currency item.amount}}</td>
+                        <td>{{item.payee.name}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        {{else}}
+            <h3>You dont' have payments yet</h3>
         {{/if}}
-
         {{#link-to 'payments' class="btn btn-link"}}To all payments{{/link-to}}
     </div>
 </div>

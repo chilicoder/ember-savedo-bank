@@ -5,9 +5,11 @@
         <label for="firstname" class="col-sm-3 control-label">Specify first name</label>
         <div class="col-sm-9">
             {{input placeholder="Name" id ="firstname" value=firstNameValue class="form-control" tabindex="1"}}
-            {{#if errorMessages.firstNameValue class="error-message"}}
-                {{errorMessages.firstNameValue}}
-            {{/if}}
+            <div class="error-message">
+                {{#if errorMessages.firstNameValue}}
+                    {{errorMessages.firstNameValue}}
+                {{/if}}
+            </div>
         </div>
     </div>
 
@@ -15,9 +17,11 @@
         <label for="secondname" class="col-sm-3 control-label">Specify second name</label>
         <div class="col-sm-9">
             {{input placeholder="Surname" id ="secondname" value=secondNameValue class="form-control" tabindex="2"}}
-            {{#if errorMessages.secondNameValue class="error-message"}}
-                {{errorMessages.secondNameValue}}
-            {{/if}}
+            <div class="error-message">
+                {{#if errorMessages.secondNameValue}}
+                    {{errorMessages.secondNameValue}}
+                {{/if}}
+            </div>
         </div>
     </div>
 
@@ -32,9 +36,11 @@
         <label for="iban" class="col-sm-3 control-label">Specify IBAN</label>
         <div class="col-sm-9">
             {{input placeholder="IBAN" id ="iban" value=IBANValue class="form-control" tabindex="4"}}
-            {{#if errorMessages.IBANValue class="error-message"}}
-                {{errorMessages.IBANValue}}
-            {{/if}}
+            <div class="error-message">
+                {{#if errorMessages.IBANValue}}
+                    {{errorMessages.IBANValue}}
+                {{/if}}
+            </div>
         </div>
     </div>
 </form>

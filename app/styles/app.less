@@ -40,6 +40,9 @@ nav {
         height: 300px;
 
     }
+    .payee-new {
+        color: @custom-color-orange;
+    }
     div.payments {
         ul {
             list-style-type: none;
@@ -51,6 +54,10 @@ nav {
     }
 }
 
+table {
+    table-layout: fixed;
+}
+
 table.payments {
     td.future {
         color: @custom-color-orange;
@@ -58,7 +65,15 @@ table.payments {
 
 }
 
+.payee-profile {
+    margin-bottom: 30px;
+}
 
 div.submit {
     text-align: center;
+    margin-bottom: 30px;
+}
+.error-message {
+    color: @brand-danger;
+    margin-top: 5px;
 }

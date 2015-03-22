@@ -16,9 +16,12 @@
                 <label for="amount" class="col-sm-3 control-label">Specify amount</label>
                 <div class="col-sm-9">
                     {{input placeholder="Amount" value=amountValue class="form-control" tabindex="2"}}
-                    {{#if errorMessages.amountValue class="error-message"}}
-                        {{errorMessages.amountValue}}
-                    {{/if}}
+                    <div class="error-message">
+                        {{#if errorMessages.amountValue }}
+                            {{errorMessages.amountValue}}
+                        {{/if}}
+                    </div>
+
                 </div>
             </div>
             <div {{bind-attr class=":form-group errorMessages.dateValue:has-error"}}>
@@ -26,9 +29,11 @@
                 <div class="col-sm-9">
                     {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true class="form-control" tabindex="3"}}
                     <div>
-                        {{#if errorMessages.dateValue class="error-message"}}
-                            {{errorMessages.dateValue}}
-                        {{/if}}
+                        <div class="error-message">
+                            {{#if errorMessages.dateValue }}
+                                {{errorMessages.dateValue}}
+                            {{/if}}
+                        </div>
                     </div>
                 </div>
             </div>

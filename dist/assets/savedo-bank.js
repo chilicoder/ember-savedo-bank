@@ -1183,13 +1183,13 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
             } else {
               fragment = this.build(dom);
             }
-            var element1 = dom.childAt(fragment, [1]);
-            var element2 = dom.childAt(element1, [1]);
-            var morph0 = dom.createMorphAt(element2,-1,0);
-            var morph1 = dom.createMorphAt(dom.childAt(element1, [3]),0,1);
-            var morph2 = dom.createMorphAt(element1,4,5);
-            var morph3 = dom.createMorphAt(element1,5,-1);
-            element(env, element2, context, "bind-attr", [], {"class": "item.isFutureTransfer:future"});
+            var element2 = dom.childAt(fragment, [1]);
+            var element3 = dom.childAt(element2, [1]);
+            var morph0 = dom.createMorphAt(element3,-1,0);
+            var morph1 = dom.createMorphAt(dom.childAt(element2, [3]),0,1);
+            var morph2 = dom.createMorphAt(element2,4,5);
+            var morph3 = dom.createMorphAt(element2,5,-1);
+            element(env, element3, context, "bind-attr", [], {"class": "item.isFutureTransfer:future"});
             inline(env, morph0, context, "helper-moment", [get(env, context, "item.createdAt")], {"format": "ll"});
             block(env, morph1, context, "if", [get(env, context, "item.isFutureTransfer")], {}, child0, child1);
             inline(env, morph2, context, "helper-currency", [get(env, context, "item.amount")], {});
@@ -1324,23 +1324,31 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
           hasRendered: false,
           build: function build(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("                ");
+            var el1 = dom.createTextNode("                    ");
             dom.appendChild(el0, el1);
-            var el1 = dom.createElement("li");
-            var el2 = dom.createTextNode(" On ");
+            var el1 = dom.createElement("tr");
+            var el2 = dom.createTextNode("\n                        ");
             dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode(" ");
+            var el2 = dom.createElement("td");
             dom.appendChild(el1, el2);
-            var el2 = dom.createElement("span");
+            var el2 = dom.createTextNode("\n                        ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createElement("td");
             dom.setAttribute(el2,"class","hidden-xs");
             var el3 = dom.createTextNode(" you ");
             dom.appendChild(el2, el3);
             var el3 = dom.createTextNode(" ");
             dom.appendChild(el2, el3);
             dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode(" ");
+            var el2 = dom.createTextNode("\n                        ");
             dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode(" to ");
+            var el2 = dom.createElement("td");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n                        ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createElement("td");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n                    ");
             dom.appendChild(el1, el2);
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n");
@@ -1368,11 +1376,12 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
               fragment = this.build(dom);
             }
             var element0 = dom.childAt(fragment, [1]);
-            var morph0 = dom.createMorphAt(element0,0,1);
-            var morph1 = dom.createMorphAt(dom.childAt(element0, [2]),0,1);
-            var morph2 = dom.createMorphAt(element0,3,4);
-            var morph3 = dom.createMorphAt(element0,4,-1);
-            element(env, element0, context, "bind-attr", [], {"class": "item.isFutureTransfer:future"});
+            var element1 = dom.childAt(element0, [1]);
+            var morph0 = dom.createMorphAt(element1,-1,-1);
+            var morph1 = dom.createMorphAt(dom.childAt(element0, [3]),0,1);
+            var morph2 = dom.createMorphAt(dom.childAt(element0, [5]),-1,-1);
+            var morph3 = dom.createMorphAt(dom.childAt(element0, [7]),-1,-1);
+            element(env, element1, context, "bind-attr", [], {"class": "item.isFutureTransfer:future"});
             inline(env, morph0, context, "helper-moment", [get(env, context, "item.createdAt")], {"format": "ll"});
             block(env, morph1, context, "if", [get(env, context, "item.isFutureTransfer")], {}, child0, child1);
             inline(env, morph2, context, "helper-currency", [get(env, context, "item.amount")], {});
@@ -1388,21 +1397,53 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("\n        ");
+          var el1 = dom.createTextNode("            ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("h3");
           var el2 = dom.createTextNode("Last payments:");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n        ");
+          var el1 = dom.createTextNode("\n            ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createElement("ul");
+          var el1 = dom.createElement("table");
+          dom.setAttribute(el1,"class","table table-striped payments");
+          var el2 = dom.createTextNode("\n                ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("tr");
+          var el3 = dom.createTextNode("\n                    ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("th");
+          var el4 = dom.createTextNode("Time");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n                    ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("th");
+          dom.setAttribute(el3,"class","hidden-xs");
+          var el4 = dom.createTextNode("Action");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n                    ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("th");
+          var el4 = dom.createTextNode("Amount");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n                    ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("th");
+          var el4 = dom.createTextNode("Payee");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n                ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("        ");
+          var el2 = dom.createTextNode("            ");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n\n");
+          var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
@@ -1426,13 +1467,54 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
           } else {
             fragment = this.build(dom);
           }
-          var morph0 = dom.createMorphAt(dom.childAt(fragment, [3]),0,1);
+          var morph0 = dom.createMorphAt(dom.childAt(fragment, [3]),2,3);
           block(env, morph0, context, "each", [get(env, context, "limitedPaymentList")], {"keyword": "item"}, child0, null);
           return fragment;
         }
       };
     }());
     var child4 = (function() {
+      return {
+        isHTMLBars: true,
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("            ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("h3");
+          var el2 = dom.createTextNode("You dont' have payments yet");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child5 = (function() {
       return {
         isHTMLBars: true,
         blockParams: 0,
@@ -1496,7 +1578,7 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"class","balance");
-        var el4 = dom.createTextNode("\n        Current Balance: ");
+        var el4 = dom.createTextNode("\n            Current Balance: ");
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n        ");
         dom.appendChild(el3, el4);
@@ -1523,7 +1605,7 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","col-xs-4");
+        dom.setAttribute(el4,"class","col-xs-5 col-sm-3");
         var el5 = dom.createTextNode("\n                ");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n            ");
@@ -1532,7 +1614,7 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","col-xs-4 col-xs-offset-1");
+        dom.setAttribute(el4,"class","col-xs-4 col-xs-offset-1 col-sm-3");
         var el5 = dom.createTextNode("\n                ");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n            ");
@@ -1552,7 +1634,7 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("");
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n        ");
+        var el3 = dom.createTextNode("        ");
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
@@ -1586,26 +1668,26 @@ define('savedo-bank/templates/index', ['exports'], function (exports) {
         } else {
           fragment = this.build(dom);
         }
-        var element3 = dom.childAt(fragment, [0]);
-        var element4 = dom.childAt(element3, [3]);
-        var element5 = dom.childAt(element4, [7]);
-        var element6 = dom.childAt(element3, [5]);
-        if (this.cachedFragment) { dom.repairClonedNode(element6,[1]); }
-        var morph0 = dom.createMorphAt(dom.childAt(element4, [1]),0,1);
-        var morph1 = dom.createMorphAt(dom.childAt(element4, [3]),0,1);
-        var morph2 = dom.createMorphAt(dom.childAt(element5, [1]),0,1);
-        var morph3 = dom.createMorphAt(dom.childAt(element5, [3]),0,1);
-        var morph4 = dom.createMorphAt(element6,0,1);
-        var morph5 = dom.createMorphAt(element6,1,2);
-        var morph6 = dom.createMorphAt(element6,2,3);
+        var element4 = dom.childAt(fragment, [0]);
+        var element5 = dom.childAt(element4, [3]);
+        var element6 = dom.childAt(element5, [7]);
+        var element7 = dom.childAt(element4, [5]);
+        if (this.cachedFragment) { dom.repairClonedNode(element7,[1]); }
+        var morph0 = dom.createMorphAt(dom.childAt(element5, [1]),0,1);
+        var morph1 = dom.createMorphAt(dom.childAt(element5, [3]),0,1);
+        var morph2 = dom.createMorphAt(dom.childAt(element6, [1]),0,1);
+        var morph3 = dom.createMorphAt(dom.childAt(element6, [3]),0,1);
+        var morph4 = dom.createMorphAt(element7,0,1);
+        var morph5 = dom.createMorphAt(element7,1,2);
+        var morph6 = dom.createMorphAt(element7,2,3);
         var morph7 = dom.createMorphAt(fragment,1,2,contextualElement);
         inline(env, morph0, context, "helper-currency", [get(env, context, "account.currentBalance")], {});
         inline(env, morph1, context, "ember-chart", [], {"type": "Line", "data": get(env, context, "chartData"), "height": 300, "width": 500});
         block(env, morph2, context, "link-to", ["payments.new"], {"class": "btn btn-lg btn-primary"}, child0, null);
-        block(env, morph3, context, "link-to", ["payees.new"], {"class": "btn btn-lg btn-link"}, child1, null);
+        block(env, morph3, context, "link-to", ["payees.new"], {"class": "btn btn-lg btn-link payee-new"}, child1, null);
         block(env, morph4, context, "if", [get(env, context, "futurePaymentList")], {}, child2, null);
-        block(env, morph5, context, "if", [get(env, context, "limitedPaymentList")], {}, child3, null);
-        block(env, morph6, context, "link-to", ["payments"], {"class": "btn btn-link"}, child4, null);
+        block(env, morph5, context, "if", [get(env, context, "limitedPaymentList")], {}, child3, child4);
+        block(env, morph6, context, "link-to", ["payments"], {"class": "btn btn-link"}, child5, null);
         content(env, morph7, context, "outlet");
         return fragment;
       }
@@ -1673,7 +1755,7 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("                ");
+          var el1 = dom.createTextNode("                    ");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
@@ -1713,7 +1795,7 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("                ");
+          var el1 = dom.createTextNode("                    ");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
@@ -1753,7 +1835,7 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("                ");
+          var el1 = dom.createTextNode("                    ");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
@@ -1817,9 +1899,16 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         dom.setAttribute(el3,"class","col-sm-9");
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n");
+        var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("        ");
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","error-message");
+        var el5 = dom.createTextNode("\n");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("            ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n        ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n    ");
@@ -1842,9 +1931,16 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         dom.setAttribute(el3,"class","col-sm-9");
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n");
+        var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("        ");
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","error-message");
+        var el5 = dom.createTextNode("\n");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("            ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n        ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n    ");
@@ -1891,9 +1987,16 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         dom.setAttribute(el3,"class","col-sm-9");
         var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n");
+        var el4 = dom.createTextNode("\n            ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("        ");
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","error-message");
+        var el5 = dom.createTextNode("\n");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("            ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n        ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n    ");
@@ -1934,22 +2037,22 @@ define('savedo-bank/templates/payees/edit-payee', ['exports'], function (exports
         var element5 = dom.childAt(element0, [7]);
         var element6 = dom.childAt(element5, [3]);
         var morph0 = dom.createMorphAt(element2,0,1);
-        var morph1 = dom.createMorphAt(element2,1,2);
+        var morph1 = dom.createMorphAt(dom.childAt(element2, [2]),0,1);
         var morph2 = dom.createMorphAt(element4,0,1);
-        var morph3 = dom.createMorphAt(element4,1,2);
+        var morph3 = dom.createMorphAt(dom.childAt(element4, [2]),0,1);
         var morph4 = dom.createMorphAt(dom.childAt(element0, [5, 3]),0,1);
         var morph5 = dom.createMorphAt(element6,0,1);
-        var morph6 = dom.createMorphAt(element6,1,2);
+        var morph6 = dom.createMorphAt(dom.childAt(element6, [2]),0,1);
         element(env, element1, context, "bind-attr", [], {"class": ":form-group errorMessages.firstNameValue:has-error"});
         inline(env, morph0, context, "input", [], {"placeholder": "Name", "id": "firstname", "value": get(env, context, "firstNameValue"), "class": "form-control", "tabindex": "1"});
-        block(env, morph1, context, "if", [get(env, context, "errorMessages.firstNameValue")], {"class": "error-message"}, child0, null);
+        block(env, morph1, context, "if", [get(env, context, "errorMessages.firstNameValue")], {}, child0, null);
         element(env, element3, context, "bind-attr", [], {"class": ":form-group errorMessages.secondNameValue:has-error"});
         inline(env, morph2, context, "input", [], {"placeholder": "Surname", "id": "secondname", "value": get(env, context, "secondNameValue"), "class": "form-control", "tabindex": "2"});
-        block(env, morph3, context, "if", [get(env, context, "errorMessages.secondNameValue")], {"class": "error-message"}, child1, null);
+        block(env, morph3, context, "if", [get(env, context, "errorMessages.secondNameValue")], {}, child1, null);
         inline(env, morph4, context, "view", ["select"], {"id": "bank", "content": get(env, context, "banks"), "optionValuePath": "content.id", "class": "form-control", "optionLabelPath": "content.name", "value": get(env, context, "bankSelectValue"), "tabindex": "3"});
         element(env, element5, context, "bind-attr", [], {"class": ":form-group errorMessages.IBANValue:has-error"});
         inline(env, morph5, context, "input", [], {"placeholder": "IBAN", "id": "iban", "value": get(env, context, "IBANValue"), "class": "form-control", "tabindex": "4"});
-        block(env, morph6, context, "if", [get(env, context, "errorMessages.IBANValue")], {"class": "error-message"}, child2, null);
+        block(env, morph6, context, "if", [get(env, context, "errorMessages.IBANValue")], {}, child2, null);
         return fragment;
       }
     };
@@ -2641,46 +2744,6 @@ define('savedo-bank/templates/payees/payee', ['exports'], function (exports) {
       };
     }());
     var child2 = (function() {
-      var child0 = (function() {
-        return {
-          isHTMLBars: true,
-          blockParams: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          build: function build(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("        ");
-            dom.appendChild(el0, el1);
-            var el1 = dom.createTextNode("\n");
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          render: function render(context, env, contextualElement) {
-            var dom = env.dom;
-            var hooks = env.hooks, get = hooks.get, inline = hooks.inline;
-            dom.detectNamespace(contextualElement);
-            var fragment;
-            if (env.useFragmentCache && dom.canClone) {
-              if (this.cachedFragment === null) {
-                fragment = this.build(dom);
-                if (this.hasRendered) {
-                  this.cachedFragment = fragment;
-                } else {
-                  this.hasRendered = true;
-                }
-              }
-              if (this.cachedFragment) {
-                fragment = dom.cloneNode(this.cachedFragment, true);
-              }
-            } else {
-              fragment = this.build(dom);
-            }
-            var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
-            inline(env, morph0, context, "render", ["payments.index", get(env, context, "payments")], {});
-            return fragment;
-          }
-        };
-      }());
       return {
         isHTMLBars: true,
         blockParams: 0,
@@ -2688,15 +2751,15 @@ define('savedo-bank/templates/payees/payee', ['exports'], function (exports) {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("");
+          var el1 = dom.createTextNode("    ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("");
+          var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, get = hooks.get, block = hooks.block;
+          var hooks = env.hooks, get = hooks.get, inline = hooks.inline;
           dom.detectNamespace(contextualElement);
           var fragment;
           if (env.useFragmentCache && dom.canClone) {
@@ -2714,9 +2777,8 @@ define('savedo-bank/templates/payees/payee', ['exports'], function (exports) {
           } else {
             fragment = this.build(dom);
           }
-          if (this.cachedFragment) { dom.repairClonedNode(fragment,[0,1]); }
           var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
-          block(env, morph0, context, "if", [get(env, context, "payments")], {}, child0, null);
+          inline(env, morph0, context, "render", ["payments.index", get(env, context, "payments")], {});
           return fragment;
         }
       };
@@ -2729,7 +2791,7 @@ define('savedo-bank/templates/payees/payee', ['exports'], function (exports) {
       build: function build(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1,"class","row");
+        dom.setAttribute(el1,"class","row payee-profile");
         var el2 = dom.createTextNode("\n    ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
@@ -3111,7 +3173,7 @@ define('savedo-bank/templates/payments/index', ['exports'], function (exports) {
           var el1 = dom.createTextNode("            ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("h3");
-          var el2 = dom.createTextNode("You dont'have payments yet");
+          var el2 = dom.createTextNode("You dont' have payments yet");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
@@ -3320,7 +3382,7 @@ define('savedo-bank/templates/payments/new', ['exports'], function (exports) {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("                        ");
+          var el1 = dom.createTextNode("                            ");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
@@ -3360,7 +3422,7 @@ define('savedo-bank/templates/payments/new', ['exports'], function (exports) {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("                            ");
+          var el1 = dom.createTextNode("                                ");
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
@@ -3466,9 +3528,16 @@ define('savedo-bank/templates/payments/new', ['exports'], function (exports) {
         dom.setAttribute(el5,"class","col-sm-9");
         var el6 = dom.createTextNode("\n                    ");
         dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n");
+        var el6 = dom.createTextNode("\n                    ");
         dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("                ");
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","error-message");
+        var el7 = dom.createTextNode("\n");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("                    ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n\n                ");
         dom.appendChild(el5, el6);
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n            ");
@@ -3494,9 +3563,16 @@ define('savedo-bank/templates/payments/new', ['exports'], function (exports) {
         var el6 = dom.createTextNode("\n                    ");
         dom.appendChild(el5, el6);
         var el6 = dom.createElement("div");
-        var el7 = dom.createTextNode("\n");
+        var el7 = dom.createTextNode("\n                        ");
         dom.appendChild(el6, el7);
-        var el7 = dom.createTextNode("                    ");
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7,"class","error-message");
+        var el8 = dom.createTextNode("\n");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("                        ");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n                    ");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n                ");
@@ -3564,18 +3640,18 @@ define('savedo-bank/templates/payments/new', ['exports'], function (exports) {
         var morph1 = dom.createMorphAt(element0,3,4);
         var morph2 = dom.createMorphAt(dom.childAt(element1, [1, 3]),0,1);
         var morph3 = dom.createMorphAt(element3,0,1);
-        var morph4 = dom.createMorphAt(element3,1,2);
+        var morph4 = dom.createMorphAt(dom.childAt(element3, [2]),0,1);
         var morph5 = dom.createMorphAt(element5,0,1);
-        var morph6 = dom.createMorphAt(dom.childAt(element5, [2]),0,1);
+        var morph6 = dom.createMorphAt(dom.childAt(element5, [2, 1]),0,1);
         block(env, morph0, context, "link-to", ["index"], {}, child0, null);
         block(env, morph1, context, "link-to", ["payments.index"], {}, child1, null);
         inline(env, morph2, context, "view", ["select"], {"id": "payee", "class": "form-control", "content": get(env, context, "model"), "optionValuePath": "content.id", "optionLabelPath": "content.name", "value": get(env, context, "payeeValue"), "tabindex": "1"});
         element(env, element2, context, "bind-attr", [], {"class": ":form-group errorMessages.amountValue:has-error"});
         inline(env, morph3, context, "input", [], {"placeholder": "Amount", "value": get(env, context, "amountValue"), "class": "form-control", "tabindex": "2"});
-        block(env, morph4, context, "if", [get(env, context, "errorMessages.amountValue")], {"class": "error-message"}, child2, null);
+        block(env, morph4, context, "if", [get(env, context, "errorMessages.amountValue")], {}, child2, null);
         element(env, element4, context, "bind-attr", [], {"class": ":form-group errorMessages.dateValue:has-error"});
         inline(env, morph5, context, "bootstrap-datepicker", [], {"value": get(env, context, "dateValue"), "todayHighlight": true, "autoclose": true, "class": "form-control", "tabindex": "3"});
-        block(env, morph6, context, "if", [get(env, context, "errorMessages.dateValue")], {"class": "error-message"}, child3, null);
+        block(env, morph6, context, "if", [get(env, context, "errorMessages.dateValue")], {}, child3, null);
         element(env, element6, context, "action", ["submit"], {});
         return fragment;
       }
@@ -4594,7 +4670,7 @@ catch(err) {
 if (runningTests) {
   require("savedo-bank/tests/test-helper");
 } else {
-  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.461b5123"});
+  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.1166916e"});
 }
 
 /* jshint ignore:end */
