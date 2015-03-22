@@ -10,10 +10,8 @@ export default PayeesNew.extend({
 //    bankSelectValue: Ember.computed.alias('model.bank.id'),
     bankSelectValueChanged: function (){
         var model = this.get('model');
-        console.log('bankSelectValue',this.get('bankSelectValue'));
         var self = this;
         self.store.find('bank',self.get('bankSelectValue')).then(function (bank){
-            console.log('bank',bank);
             if (bank) {
                 model.set('bank',bank);
             }

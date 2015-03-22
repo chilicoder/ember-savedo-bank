@@ -9,7 +9,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
             inline: EmberValidations.validator(function() {
                 var money = parseFloat(this.get('amountValue'));
                 if (isNaN(money)) {return;}
-                console.log(money,currency(money));
                 if (money !== currency(money).value) {
                     return "We can't convert specified value to money.";
                 }

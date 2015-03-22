@@ -27,15 +27,12 @@ export default Ember.ArrayController.extend({
     chartData: function(){
         var balance = this.get('account.currentBalance');
         var dataArray = this.get('arrangedContent').map(function(item){
-            console.log(moment(item.get('createdAt')));
             balance += item.get('amount');
             return {
                 label: moment(item.get('createdAt')).format('ll'),
                 data: balance
             };
         }).reverse();
-        console.log('dataArray',dataArray);
-
         return {
             labels: dataArray.map(function(item){return item.label;}),
             datasets:[

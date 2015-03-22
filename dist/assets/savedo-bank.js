@@ -175,15 +175,12 @@ define('savedo-bank/controllers/index', ['exports', 'ember'], function (exports,
         chartData: (function () {
             var balance = this.get("account.currentBalance");
             var dataArray = this.get("arrangedContent").map(function (item) {
-                console.log(moment(item.get("createdAt")));
                 balance += item.get("amount");
                 return {
                     label: moment(item.get("createdAt")).format("ll"),
                     data: balance
                 };
             }).reverse();
-            console.log("dataArray", dataArray);
-
             return {
                 labels: dataArray.map(function (item) {
                     return item.label;
@@ -285,10 +282,8 @@ define('savedo-bank/controllers/payees/payee', ['exports', 'ember', 'savedo-bank
         //    bankSelectValue: Ember.computed.alias('model.bank.id'),
         bankSelectValueChanged: (function () {
             var model = this.get("model");
-            console.log("bankSelectValue", this.get("bankSelectValue"));
             var self = this;
             self.store.find("bank", self.get("bankSelectValue")).then(function (bank) {
-                console.log("bank", bank);
                 if (bank) {
                     model.set("bank", bank);
                 }
@@ -349,7 +344,6 @@ define('savedo-bank/controllers/payments/new', ['exports', 'ember', 'ember-valid
                     if (isNaN(money)) {
                         return;
                     }
-                    console.log(money, currency(money));
                     if (money !== currency(money).value) {
                         return "We can't convert specified value to money.";
                     }
@@ -649,7 +643,6 @@ define('savedo-bank/routes/payees/new', ['exports', 'ember'], function (exports,
         },
         actions: {
             willTransition: function willTransition(transition) {
-                console.log("DATAA!", transition);
                 this.get("controller").flush();
             }
         }
@@ -3739,6 +3732,131 @@ define('savedo-bank/tests/controllers/payments/new.jshint', function () {
   });
 
 });
+define('savedo-bank/tests/e2e/e2e-test', ['ember', 'qunit', 'savedo-bank/tests/helpers/start-app'], function (Ember, qunit, startApp) {
+
+    'use strict';
+
+    var App;
+
+    qunit.module("UserStories", {
+        beforeEach: function beforeEach() {
+            if (App) {
+                Ember['default'].run(App, App.destroy);
+            }
+            App = startApp['default']();
+        },
+        afterEach: function afterEach() {}
+    });
+
+    /*1) As a customer, I want to be able to view my balance so that I can see how much money I have
+     in my account.
+     Given a customer opening the web app,
+     When they click on Balances
+     Then they see their account balance.
+     */
+
+    qunit.test("Account page", function (assert) {
+        visit("/").then(function () {
+            assert.ok(find(".balance").text().trim().slice(18) === "56 000,00", "Balance is 56 000,00");
+        });
+    });
+
+    /*
+     2) As a customer, I want to be able to create a payee so that I can send money to someone.
+     Give a customer opening the web app,
+     When they click on Create Payee
+     Then they see a form to create a new payee and can enter the Payee name, Bank and IBAN
+     */
+
+    qunit.test("Create payee", function (assert) {
+        visit("/");
+        click(".payee-new");
+        fillIn("#firstname", "Mister");
+        fillIn("#secondname", "Incognito");
+        fillIn("#iban", "DE12500100000000009890");
+        click(".submit a");
+        andThen(function () {
+            assert.ok(find(".payee-profile").length > 0, "Block Profile exists");
+            assert.ok(find(".payee-profile h2").text().trim() === "Mister Incognito", "Name of payee is Mister Incognito");
+            assert.ok(find(".payee-profile > div > div.row").eq(1).text().trim() === "IBAN: DE12500100000000009890", "IBAN is IBAN: DE12500100000000009890");
+        });
+    });
+
+    /*
+     3) As a customer, I want to be able to edit a payee so that I can send money to someone.
+     Give a customer opening the web app,
+     When they click on Payees
+     Then they see a list of payees and they can click on one and edit it.
+     */
+
+    qunit.test("Edit payee", function (assert) {
+        visit("/payees");
+        click(find("table tr td a").eq(1)).then(function () {
+            click(find(".submit a").eq(0)).then(function () {
+                assert.equal(find(".submit a").eq(0).text().trim(), "Save payee", "First submit link is Save payee");
+                fillIn("#firstname", "Mister");
+                fillIn("#secondname", "Incognito");
+                fillIn("#iban", "DE12500100000000009890");
+                click(find(".submit a").eq(0));
+                andThen(function () {
+                    assert.ok(find(".payee-profile").length > 0, "Block Profile exists");
+                    assert.equal(find(".payee-profile h2").eq(0).text().trim(), "Mister Incognito", "Name of payee is Mister Incognito");
+                    assert.ok(find(".payee-profile > div > div.row").eq(1).text().trim() === "IBAN: DE12500100000000009890", "IBAN is IBAN: DE12500100000000009890");
+                });
+            });
+        });
+    });
+
+    /*
+     4) As a customer, I want to be able to transfer money to a payee, so that I can pay my bills.
+     Given a customer opening the web app,
+     When they click on Make Payment,
+     Then they see a form that allows them to choose a Payee, enter an amount and a date.
+     */
+
+    qunit.test("Make payment", function (assert) {
+        var randomAmount = "579.68";
+        visit("/payments").then(function () {
+            var initialPayments = find("table td:contains(\"€579,68\")").length;
+            visit("/payments/new");
+            fillIn("[placeholder=\"Amount\"]", randomAmount);
+            click(find(".submit a").eq(0)).then(function () {
+                visit("/payments");
+                andThen(function () {
+                    assert.equal(find("table td:contains(\"€579,68\")").length, initialPayments + 1, "Pyements before:" + initialPayments + " Payments after:" + initialPayments + 1);
+                });
+            });
+        });
+    });
+
+    /*
+     5) As a customer, I want to be able to see a list of transactions so that I can determine what has
+     happened on my account.
+     Given a customer opening the web app
+     When they click on Statement
+     Then they see a list of transactions on their account */
+
+    qunit.test("See payments", function (assert) {
+        visit("/payments").then(function () {
+            andThen(function () {
+                assert.ok(find("table.payments tr").length > 2, "Rows in payments table is more then 2");
+            });
+        });
+    });
+
+    //        Ember.run(App, App.destroy);
+
+});
+define('savedo-bank/tests/e2e/e2e-test.jshint', function () {
+
+  'use strict';
+
+  module('JSHint - e2e');
+  test('e2e/e2e-test.js should pass jshint', function() { 
+    ok(true, 'e2e/e2e-test.js should pass jshint.'); 
+  });
+
+});
 define('savedo-bank/tests/helpers/helper-currency.jshint', function () {
 
   'use strict';
@@ -3912,7 +4030,7 @@ define('savedo-bank/tests/routes/payees/new.jshint', function () {
 
   module('JSHint - routes/payees');
   test('routes/payees/new.js should pass jshint', function() { 
-    ok(true, 'routes/payees/new.js should pass jshint.'); 
+    ok(false, 'routes/payees/new.js should pass jshint.\nroutes/payees/new.js: line 14, col 35, \'transition\' is defined but never used.\n\n1 error'); 
   });
 
 });
@@ -4670,7 +4788,7 @@ catch(err) {
 if (runningTests) {
   require("savedo-bank/tests/test-helper");
 } else {
-  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.032cbdee"});
+  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.874b7e7a"});
 }
 
 /* jshint ignore:end */

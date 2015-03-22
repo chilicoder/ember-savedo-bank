@@ -12,7 +12,6 @@ export default Ember.Route.extend({
     },
     actions: {
         willTransition: function (transition) {
-            console.log('DATAA!',transition);
             this.get('controller').flush();
         }
     }
