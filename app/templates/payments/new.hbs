@@ -1,3 +1,21 @@
 <h2>payments new</h2>
 {{#link-to 'index'}}To overview{{/link-to}}
 {{#link-to 'payments.index' }}To payments{{/link-to}}
+
+<h2>Specify payment information</h2>
+<form>
+    {{view 'select' content=model optionValuePath="content.id" optionLabelPath="content.name" value=payeeValue}}
+
+    {{input placeholder="Amount" value=amountValue}}
+    {{#if errorMessages.amountValue}}
+        {{errorMessages.amountValue}}
+    {{/if}}
+    {{bootstrap-datepicker value=dateValue todayHighlight=true autoclose=true}}
+    {{!--{{date-picker date=dateValue valueFormat='YYYY-MM-DD' allowBlank=true}}--}}
+    {{!--{{input placeholder="Date (for delayed transfer)" value=dateValue}}--}}
+    {{#if errorMessages.dateValue}}
+        {{errorMessages.dateValue}}
+    {{/if}}
+
+    <a {{action 'submit'}} class="btn btn-primary">Create new payment</a>
+</form>

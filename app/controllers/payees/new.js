@@ -10,6 +10,10 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
         secondNameValue: {
             presence: true,
             length: { minimum: 5 }
+        },
+        IBANValue: {
+            format: { with: /^([a-zA-Z]|\d)+$/, allowBlank: false, message: 'Must be letters and numbers only'  },
+            length: { is: 21}
         }
     },
     firstNameValue: null,
@@ -21,7 +25,9 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
         if (this.get('submitedOnce')) {
             return this.get('errors');
         }
-        else return {}
+        else {
+            return {};
+        }
     }.property('errors','submitedOnce'),
 
 
@@ -38,8 +44,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                         IBAN: self.get('IBANValue')
                     });
                     console.log('...saving');
-                    payee.save();
-                    self.set('submitedOnce',false);
+                    payee.save().then(function(data){
+                            self.set('submitedOnce',false);
+                            alert('Payee '+data.get('name')+' successfully created!');
+                            self.transitionToRoute('payees.payee',data);
+                        }
+                    );
+
                 });
 
             }
