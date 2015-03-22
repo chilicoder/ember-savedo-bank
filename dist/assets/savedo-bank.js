@@ -4670,7 +4670,7 @@ catch(err) {
 if (runningTests) {
   require("savedo-bank/tests/test-helper");
 } else {
-  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.8710dd6b"});
+  require("savedo-bank/app")["default"].create({"name":"savedo-bank","version":"0.0.0.5f14cb68"});
 }
 
 /* jshint ignore:end */
