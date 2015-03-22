@@ -6,7 +6,7 @@ export default Ember.ArrayController.extend({
     sortAscending: false,
 
     contentWatcher: function(){
-        this.sortBy();
+
     }.observes('content'),
 
     futurePaymentList: function () {
@@ -21,7 +21,8 @@ export default Ember.ArrayController.extend({
         return this.get('arrangedContent').filter(function(item){
             return !item.get('isFutureTransfer');
         }).slice(0,paymentsLimit);
-    }.property('arrangedContent'),
+    }.property('arrangedContent.@each'),
+
 
     chartData: function(){
         var balance = this.get('account.currentBalance');

@@ -12,8 +12,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
             length: { minimum: 5 }
         },
         IBANValue: {
-            format: { with: /^([a-zA-Z]|\d)+$/, allowBlank: false, message: 'Must be letters and numbers only'  },
-            length: { is: 2}
+            format: { with: /DE\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{2}|DE\d{20}/, allowBlank: false, message: 'Only German IBAN allowed'  },
+            length: { is: 22}
         }
     },
     firstNameValue: null,
