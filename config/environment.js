@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'savedo-bank',
     environment: environment,
-    baseURL: '/',
+    baseURL : '/ember-savedo-bank',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-      ENV.baseURL = 'ember-savedo-bank/';
+
   }
 
   return ENV;
