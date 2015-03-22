@@ -1,5 +1,6 @@
 <h2>New Payee:</h2>
 {{#if submitedSuccessfully}}
+    <h2>Payee {{submitedSuccessfully.name}} successfully created!</h2>
     {{#link-to 'payees.payee' submitedSuccessfully.id}}To the payee page{{/link-to}}
     {{#link-to 'index' }}To the account overview{{/link-to}}
 {{else}}

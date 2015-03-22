@@ -1,5 +1,6 @@
 <h2>Specify payee's information</h2>
 <form>
+    {{log errorMessages}}
     {{input placeholder="First Name" value=firstNameValue}}
     {{#if errorMessages.firstNameValue}}
         {{errorMessages.firstNameValue}}

@@ -3,6 +3,7 @@ import PayeesNew from './new';
 
 export default PayeesNew.extend({
     isEditing:false,
+    submitedOnce:true,
     firstNameValue: Ember.computed.alias('model.firstname'),
     secondNameValue: Ember.computed.alias('model.secondname'),
     IBANValue: Ember.computed.alias('model.IBAN'),
@@ -17,7 +18,7 @@ export default PayeesNew.extend({
                 model.set('bank',bank);
             }
         });
-    }.property('bankSelectValue'),
+    }.observes('bankSelectValue'),
 
     actions: {
         startEditing: function(){

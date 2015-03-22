@@ -46,7 +46,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
                     console.log('...saving');
                     payee.save().then(function(data){
                             self.set('submitedOnce',false);
-                            alert('Payee '+data.get('name')+' successfully created!');
                             self.set('submitedSuccessfully',data);
                         }
                     );
