@@ -1,6 +1,6 @@
 <h2>New Payee:</h2>
 {{#if submitedSuccessfully}}
-    {{!--{{#link-to 'payees.payee' submitedSuccessfully}}To the payee page{{/link-to}}--}}
+    {{#link-to 'payees.payee' submitedSuccessfully.id}}To the payee page{{/link-to}}
     {{#link-to 'index' }}To the account overview{{/link-to}}
 {{else}}
     {{partial 'payees/edit-payee'}}
