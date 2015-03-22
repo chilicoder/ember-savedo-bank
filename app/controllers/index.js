@@ -5,6 +5,10 @@ export default Ember.ArrayController.extend({
     sortProperties: ['createdAt'],
     sortAscending: false,
 
+    contentWatcher: function(){
+        this.sortBy();
+    }.observes('content'),
+
     futurePaymentList: function () {
         var paymentsLimit = this.get('paymentsLimit');
         return this.get('arrangedContent').filter(function(item){
@@ -35,7 +39,7 @@ export default Ember.ArrayController.extend({
             labels: dataArray.map(function(item){return item.label;}),
             datasets:[
                 {
-                    label: "My First dataset",
+                    label: "Payments",
                     fillColor: "rgba(220,220,220,0.2)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",

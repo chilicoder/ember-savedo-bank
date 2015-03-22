@@ -48,17 +48,16 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
             var self = this;
             self.set('submitedOnce',true);
             if (self.get('isValid')) {
-                var date = self.get('dateValue') || new Date();
+                var date = moment(self.get('dateValue') || new Date());
                 self.store.find('payee', self.get('payeeValue')).then( function(payee){
                     var payment = self.store.createRecord('payment',{
                         payee: payee,
                         amount: self.get('amountValue'),
-                        createdAt: date
+                        createdAt: date.toDate()
                     });
                     console.log('...saving');
                     payment.save().then(function(data){
                             self.set('submitedOnce',false);
-                            alert('Payment of '+currency(parseFloat(data.get('amount'))).format()+' to '+data.get('payee.name')+' successfully created!');
                             self.set('payeeValue',null);
                             self.set('amountValue',null);
                             self.set('dateValue',null);
