@@ -1,7 +1,10 @@
 # Savedo-bank
 
 ## Demo
-Demo is [here](http://chilicoder.github.io/ember-savedo-bank/)
+Demo is [here](http://chilicoder.github.io/ember-savedo-bank/). 
+
+###Source code
+Code base is [here](https://github.com/chilicoder/ember-savedo-bank/tree/master). 
 
 ##Rationals about technologies
 ### Ember
