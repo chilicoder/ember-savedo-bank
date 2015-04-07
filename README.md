@@ -1,4 +1,5 @@
 # Savedo-bank
+This task was done by me during my application to savedo.de company in March 2014. The task was interested and I really enjoyed doing it. 
 
 ### Task 
 Task is [here](https://github.com/chilicoder/ember-savedo-bank/blob/gh-pages/Savedo%20Case%20Study%20UI_UX%20Developer.pdf)
