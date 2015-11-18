@@ -1,4 +1,6 @@
 # Savedo-bank
+## Task
+You can find the task by [this link](http://chilicoder.github.io/ember-savedo-bank/Savedo%20Case%20Study%20UI_UX%20Developer.pdf)
 
 ## Demo
 Demo is [here](http://chilicoder.github.io/ember-savedo-bank/)
